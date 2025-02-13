@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>elibrary System</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to elibrary</h1>
+    </header>
+    
+    <main class="container">
+        <section class="subscription-form">
+            <h2>Subscribe to Notifications</h2>
+            <form id="subscribeForm">
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <button type="submit">Subscribe</button>
+            </form>
+        </section>
+
+        <section class="book-list">
+            <h2>Available Books</h2>
+            <div id="booksContainer">
+                {{range .Books}}
+                <div class="book-card">
+                    <h3>{{.Title}}</h3>
+                    <p class="author">By {{.Author}}</p>
+                    <p class="isbn">ISBN: {{.ISBN}}</p>
+                    <button class="borrow-btn" data-id="{{.ID}}">
+                        {{if .Available}}Borrow{{else}}Unavailable{{end}}
+                    </button>
+                </div>
+                {{end}}
+            </div>
+        </section>
+    </main>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
